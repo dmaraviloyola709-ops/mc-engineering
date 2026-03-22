@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M&C Integrated Engineering</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">M&C Integrated Engineering</a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/">Inicio</a>
+                <a class="nav-item nav-link" href="/about">Nosotros</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container p-4">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
