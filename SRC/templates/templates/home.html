@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-5 text-white"> 
+    <div class="jumbotron bg-dark border border-secondary">
+        <h1 class="display-4">Bienvenido a la página de Inicio</h1>
+        <p class="lead">Este es tu primer sitio web profesional usando Python y Flask.</p>
+        <hr class="my-4 bg-secondary">
+        <p>Has logrado configurar correctamente la herencia de plantillas y los estilos CSS.</p>
+        <a class="btn btn-primary btn-lg" href="{{ url_for('about') }}" role="button">Saber más sobre mí</a>
+    </div>
+</div>
+{% endblock %}
