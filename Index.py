@@ -1,23 +1,29 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 
+# Ruta para la página de Inicio (INICIO)
 @app.route('/')
 def home():
     return render_template('home.html')
 
-@app.route('/about')
+# Ruta para la página de Nosotros (NOSOTROS)
+# Nota: La función se llama 'about' porque así la tienes en tu layout: url_for('about')
+@app.route('/nosotros')
 def about():
     return render_template('about.html')
 
+# Ruta para Servicios o Proyectos
 @app.route('/servicios')
 def servicios():
-    return "Sección de Servicios en construcción"
+    # Si aún no tienes servicios.html, esto evitará que el programa se caiga
+    return "Sección de Servicios y Proyectos en construcción - M&C Ingeniería"
 
+# Ruta para Contacto (CONTACTO)
 @app.route('/contacto')
 def contacto():
-    return "Sección de Contacto en construcción"
+    return "Sección de Contacto en construcción - M&C Ingeniería"
 
 if __name__ == '__main__':
-    # Cambiamos a puerto 5001 para evitar bloqueos
-    app.run(debug=True, port=5001) # Cambio de prueba
+    # Usamos el puerto 5001 como lo tenías configurado
+    app.run(debug=True, port=5001)
