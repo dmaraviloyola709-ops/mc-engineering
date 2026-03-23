@@ -1,10 +1,69 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="jumbotron text-center">
-    <h1 class="display-4">Bienvenido Ingeniero</h1>
-    <p class="lead">Soluciones integrales en Costos y Presupuestos para la construcción.</p>
-    <hr class="my-4">
-    <p>Proyecto desarrollado por Darwin Hianpier Maravi Loyola.</p>
-</div>
+
+<header class="page-section hero-bg">
+    <div class="container text-center text-white">
+        <h1 class="mb-3 text-uppercase">M&C INTEGRATED ENGINEERING</h1>
+        <p class="h4 font-weight-light mb-5 tracking-widest opacity-75">INGENIERÍA QUE CONSTRUYE CONFIANZA</p>
+        <a class="btn btn-danger btn-lg px-5 py-3 rounded-0 shadow-lg font-weight-bold" href="#servicios">CONÓCENOS MÁS</a>
+    </div>
+</header>
+
+<section id="servicios" class="page-section bg-white py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-4 font-weight-bold text-danger mb-2">Nuestras unidades de negocio</h2>
+            <p class="text-muted mx-auto" style="max-width: 800px;">Soluciones especializadas alineadas a tus metas y a los más altos estándares.</p>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-md-4 px-2">
+                <div class="unit-card-overlay"><img src="https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=800"><div class="overlay-gradient"><h4 class="font-weight-bold">MINERÍA</h4></div></div>
+            </div>
+            <div class="col-md-4 px-2">
+                <div class="unit-card-overlay"><img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=800"><div class="overlay-gradient"><h4 class="font-weight-bold">INFRAESTRUCTURA</h4></div></div>
+            </div>
+            <div class="col-md-4 px-2">
+                <div class="unit-card-overlay"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800"><div class="overlay-gradient"><h4 class="font-weight-bold">EDIFICACIONES</h4></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="page-section">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-lg-5 integration-dark d-flex align-items-center px-5 py-5">
+                <div class="w-100">
+                    <h2 class="display-4 font-weight-bold text-uppercase mb-0">NUESTRA</h2>
+                    <h2 class="display-3 font-weight-bold text-danger text-uppercase mb-4">INTEGRACIÓN</h2>
+                    <div class="red-divider"></div>
+                    <p class="h5 font-weight-light mb-5 opacity-75">Ingeniería y construcción bajo un solo equipo especializado.</p>
+                    <h1 class="display-1 font-weight-bold mb-0">+100</h1>
+                    <p class="h5 text-uppercase tracking-widest">Proyectos Entregados</p>
+                </div>
+            </div>
+            <div class="col-lg-7 d-flex align-items-center bg-white px-5 py-5">
+                <div class="row w-100">
+                    <div class="col-md-6 mb-4"><div class="card integration-card p-4"><h6>EQUIPO INTEGRADO</h6><p class="small text-muted mb-0">Gestión completa bajo un solo responsable de confianza.</p></div></div>
+                    <div class="col-md-6 mb-4"><div class="card integration-card p-4"><h6>OBRAS CONFIABLES</h6><p class="small text-muted mb-0">Capacidad técnica y calidad certificada en cada etapa.</p></div></div>
+                    <div class="col-md-6 mb-4"><div class="card integration-card p-4"><h6>PRODUCTIVIDAD</h6><p class="small text-muted mb-0">Optimización de procesos para acelerar su inversión.</p></div></div>
+                    <div class="col-md-6 mb-4"><div class="card integration-card p-4"><h6>RIESGOS BAJOS</h6><p class="small text-muted mb-0">Control estricto de cronogramas y presupuestos reales.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contacto" class="page-section bg-dark text-white">
+    <div class="container py-5 text-center">
+        <h2 class="display-4 font-weight-bold mb-4">¿Listo para <span class="text-danger">comenzar?</span></h2>
+        <p class="h5 mb-5 text-muted">Contáctanos para una asesoría técnica especializada.</p>
+        <div class="row justify-content-center">
+            <div class="col-md-6 bg-white p-4 text-dark shadow-lg">
+                <form><input type="text" class="form-control mb-3" placeholder="Nombre"><input type="email" class="form-control mb-3" placeholder="Email"><textarea class="form-control mb-3" rows="3" placeholder="Mensaje"></textarea><button class="btn btn-danger btn-block font-weight-bold">ENVIAR</button></form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
