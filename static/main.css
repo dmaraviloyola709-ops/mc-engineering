@@ -1,32 +1,56 @@
-/* --- CONFIGURACIÓN GENERAL --- */
+/* ========================================================
+   CONFIGURACIÓN GENERAL DE LA INTERFAZ
+   ======================================================== */
 html { 
     scroll-snap-type: y mandatory; 
     scroll-behavior: smooth; 
     scroll-padding-top: 70px; 
 }
-body { 
+
+body, html { 
     font-family: 'Montserrat', sans-serif; 
     overflow-x: hidden; 
     background-color: #f8f9fa; 
     margin: 0; 
+    padding: 0;
+    width: 100%;
 }
 
-/* NAVBAR */
+/* ========================================================
+   DISEÑO DE BARRA DE NAVEGACIÓN
+   ======================================================== */
 #main-header { 
-    transition: 0.5s; 
-    padding: 25px 0; 
-    background: rgba(18, 27, 37, 0.95); 
+    transition: all 0.5s ease-in-out; 
+    padding: 22px 0; 
+    background: rgba(18, 27, 37, 0.98); 
     z-index: 1000;
+    border-bottom: 2px solid transparent;
+}
+
+#main-header.scrolled {
+    padding: 12px 0; 
+    background: rgba(18, 27, 37, 1);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    border-bottom: 2px solid #b32d2d;
 }
 
 .nav-link { 
-    letter-spacing: 1px; 
-    font-size: 0.8rem; 
+    letter-spacing: 1.5px; 
+    text-transform: uppercase;
+    font-size: 0.82rem; 
     font-weight: 700; 
     color: white !important; 
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* SECCIONES */
+.nav-link:hover { 
+    color: #b32d2d !important; 
+    transform: translateY(-2px); 
+}
+
+/* ========================================================
+   CONTROL DE SECCIONES Y BANNER HERO
+   ======================================================== */
 .page-section { 
     min-height: 100vh; 
     width: 100%; 
@@ -36,7 +60,6 @@ body {
     position: relative; 
 }
 
-/* HOME (HERO GIGANTE) */
 .hero-bg {
     height: 100vh !important;
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
@@ -49,21 +72,22 @@ body {
     text-transform: uppercase; 
 }
 
-/* UNIDADES DE NEGOCIO (700PX) */
+/* ========================================================
+   UNIDADES DE NEGOCIO (TARJETAS)
+   ======================================================== */
 .unit-card-overlay {
     position: relative;
-    height: 700px !important; /* ALTURA FIJA PARA ORDENAR */
     border-radius: 15px;
     overflow: hidden;
     width: 100%;
     box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    transition: 0.4s ease;
+    transition: all 0.4s ease;
 }
 
 .unit-card-overlay img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important; /* CORTE PERFECTO */
+    object-fit: cover !important; 
 }
 
 .overlay-gradient {
@@ -71,33 +95,261 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 40%;
+    height: 45%;
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.95));
     display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 40px;
+    justify-content: flex-end;
     color: white;
 }
 
-/* INTEGRACIÓN (DIAGONAL) */
-.integration-dark {
-    background: linear-gradient(rgba(18, 27, 37, 0.92), rgba(18, 27, 37, 0.92)), 
-                url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1200') no-repeat center center / cover;
-    clip-path: polygon(0 0, 100% 0, 88% 100%, 0% 100%);
-    min-height: 600px;
-    color: white;
+/* ========================================================
+   DISEÑO DE INTEGRACIÓN (SISTEMA DE SUPERPOSICIÓN)
+   ======================================================== */
+.custom-overlap-section {
+    position: relative;
+    overflow: hidden;
+    min-height: 85vh;
 }
 
-.integration-card {
+.bg-left-diagonal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 58%;
+    height: 100%;
+    background: linear-gradient(rgba(85, 100, 115, 0.65), rgba(60, 75, 90, 0.85)), 
+                url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1200') no-repeat center center / cover;
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+    z-index: 1;
+}
+
+.z-index-2 { 
+    z-index: 2; 
+}
+
+.white-divider-thick {
+    width: 100px;
+    height: 5px;
+    background-color: #ffffff;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.overlap-grid { 
+    margin-left: -30px; 
+}
+
+.overlap-card {
     border: none;
-    border-bottom: 5px solid #b32d2d;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+    background-color: #ffffff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* AJUSTE PARA DISPOSITIVOS */
+.overlap-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+}
+
+.card-title-red {
+    color: #ba2828;
+    font-weight: 800;
+    font-size: 1.65rem;
+    line-height: 1.15;
+    margin-bottom: 0;
+    letter-spacing: -0.5px;
+}
+
+.card-text-gray {
+    color: #6c757d;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* ========================================================
+   SECCIÓN DE MARCAS / MATERIALES (CARRUSEL INFINITO)
+   ======================================================== */
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+}
+
+.marquee-track {
+    display: flex;
+    width: max-content;
+    /* Ajustado a 45 segundos por la cantidad de logos */
+    animation: scroll-marquee 45s linear infinite;
+}
+
+.marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.marquee-item {
+    width: 220px; 
+    flex-shrink: 0;
+    margin: 0 15px;
+}
+
+@keyframes scroll-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+.brand-box {
+    padding: 15px;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    background-color: #fcfcfc;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    position: relative;
+}
+
+.brand-box img {
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    filter: grayscale(100%); 
+    opacity: 0.6;
+    transition: all 0.4s ease;
+    position: absolute;
+    z-index: 2;
+}
+
+.brand-box span {
+    color: #aaaaaa;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    z-index: 1;
+}
+
+.brand-box:hover {
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-color: #b32d2d;
+    transform: translateY(-5px);
+}
+
+.brand-box:hover img {
+    filter: grayscale(0%); 
+    opacity: 1;
+}
+
+.brand-box:hover span {
+    opacity: 0; 
+}
+
+/* ========================================================
+   ESTILOS DE PIE DE PÁGINA (FOOTER)
+   ======================================================== */
+.footer-mc {
+    background-color: #b32d2d; 
+    color: white;
+    padding: 90px 0 40px 0; 
+    scroll-snap-align: start;
+}
+
+.footer-mc h2, .footer-mc h6 { 
+    letter-spacing: 2px; 
+}
+
+.footer-mc a { 
+    color: white !important; 
+    font-size: 0.88rem; 
+    transition: opacity 0.3s ease, padding-left 0.3s ease; 
+    display: block; 
+    margin-bottom: 12px;
+}
+
+.footer-mc a:hover { 
+    opacity: 0.7; 
+    text-decoration: none; 
+    padding-left: 5px; 
+}
+
+.footer-social {
+    display: flex; 
+    align-items: center; 
+    margin-top: 15px;
+}
+
+.footer-social i { 
+    font-size: 1.6rem; 
+    margin-right: 25px; 
+    transition: transform 0.3s ease, color 0.3s ease; 
+    color: white;
+}
+
+.footer-social i:hover { 
+    transform: scale(1.2); 
+    color: #121b25; 
+}
+
+.copy-bar { 
+    border-top: 1px solid rgba(255,255,255,0.2); 
+    margin-top: 60px; 
+    padding-top: 30px; 
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+
+/* ========================================================
+   REGLAS DE DISEÑO RESPONSIVO (TABLETS Y MÓVILES)
+   ======================================================== */
 @media (max-width: 991px) {
-    .hero-bg h1 { font-size: 2.8rem !important; }
-    .unit-card-overlay { height: 600px !important; }
-    .integration-dark { clip-path: none; text-align: center; }
+    #main-header { 
+        padding: 15px 0; 
+    }
+    
+    .nav-link { 
+        font-size: 0.9rem; 
+        padding: 10px 0; 
+    }
+    
+    .footer-mc { 
+        padding: 60px 0 30px 0; 
+    }
+    
+    .hero-bg h1 { 
+        font-size: 2.8rem !important; 
+    }
+    
+    .bg-left-diagonal {
+        width: 100%;
+        clip-path: none;
+    }
+    
+    .overlap-grid { 
+        margin-left: 0; 
+    }
+    
+    .footer-brand { 
+        font-size: 1.8rem; 
+        word-wrap: break-word; 
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-social { 
+        justify-content: center; 
+    } 
+    
+    .footer-brand { 
+        text-align: center; 
+    }
+    
+    .col-md-6 { 
+        text-align: center; 
+    }
 }

@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div style="height: 76px; background-color: #121b25;"></div>
+
+<header class="position-relative d-flex align-items-center justify-content-center text-center text-white" 
+        style="height: 30vh; min-height: 250px; background: linear-gradient(rgba(18, 27, 37, 0.8), rgba(18, 27, 37, 0.8)), url({{ url_for('static', filename='img/CONSULTORIA.jpg') }}) center/cover;">
+    <div class="container px-4">
+        
+        <h1 class="font-weight-bold mb-3 text-uppercase" style="font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -1px;">
+            Consultoría en Ingeniería
+        </h1>
+        
+        <p class="font-weight-normal mx-auto" style="max-width: 800px; font-size: 1.1rem; line-height: 1.5; color: #e0e0e0;">
+            Equilibrio entre conocimiento técnico actualizado y experiencia práctica para optimizar y asegurar el éxito de tu proyecto.
+        </p>
+        
+    </div>
+</header>
+
+<section class="py-5 bg-white">
+    <div class="container py-5">
+        
+        <div class="row justify-content-center text-center mb-5 pb-3">
+            <div class="col-lg-8">
+                <h2 class="font-weight-bold mb-3" style="color: #121b25; font-size: 2.5rem;">
+                    Soluciones técnicas y <span style="color: #b91c1c;">precisión</span>
+                </h2>
+                
+                <div style="width: 60px; height: 4px; background-color: #b91c1c; margin: 0 auto 25px auto;"></div>
+                
+                <p class="text-muted mb-0" style="font-size: 1.1rem; line-height: 1.8;">
+                    En <strong>M&C Integrated</strong> sabemos que el éxito de una obra radica en la planificación y los detalles. Como especialistas en ingeniería civil, aplicamos las últimas normativas y herramientas digitales para que no pierdas tiempo ni dinero. Hacemos los cálculos que otros estiman "al ojo".
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm transition-hover" style="border-radius: 12px; overflow: hidden; background-color: #f8f9fa;">
+                    <img src="{{ url_for('static', filename='img/asesoria-durante-la-construccion.jpg') }}" class="card-img-top" alt="Asesoría en obra" style="height: 200px; object-fit: cover;">
+                    <div class="card-body p-4 text-center">
+                        <h5 class="font-weight-bold" style="color: #b91c1c; font-size: 1.25rem;">Asesoría durante la Construcción</h5>
+                        <p class="text-muted small mb-0">Asesoría estratégica continua para la toma de decisiones, supervisión técnica y resolución de imprevistos en obra.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm transition-hover" style="border-radius: 12px; overflow: hidden; background-color: #f8f9fa;">
+                    <img src="{{ url_for('static', filename='img/presupuestos.jpeg') }}" class="card-img-top" alt="Metrados y presupuestos" style="height: 200px; object-fit: cover;">
+                    <div class="card-body p-4 text-center">
+                        <h5 class="font-weight-bold" style="color: #b91c1c; font-size: 1.25rem;">Metrados y Presupuestos</h5>
+                        <p class="text-muted small mb-0">Cálculo preciso de cantidades de obra (metrados), elaboración de presupuestos detallados, Análisis de Precios Unitarios (APU) y control financiero.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm transition-hover" style="border-radius: 12px; overflow: hidden; background-color: #f8f9fa;">
+                    <img src="{{ url_for('static', filename='img/modelado revit.jpg') }}" class="card-img-top" alt="Modelado BIM Revit" style="height: 200px; object-fit: cover;">
+                    <div class="card-body p-4 text-center">
+                        <h5 class="font-weight-bold" style="color: #b91c1c; font-size: 1.25rem;">Modelado Revit</h5>
+                        <p class="text-muted small mb-0">Desarrollo de modelos de información de la construcción (BIM) en Revit, para la visualización integral y coordinación de especialidades.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="py-5" style="background-color: #f1f3f5;">
+    <div class="container py-4 text-center">
+        <h3 class="font-weight-bold mb-3" style="color: #121b25; font-size: 2.2rem;">¿Listo para optimizar tu proyecto?</h3>
+        <p class="text-muted mb-4 mx-auto" style="max-width: 650px; font-size: 1.15rem; line-height: 1.7;">
+            Déjanos tus datos y te brindaremos asesoría técnica con la precisión y el detalle que tu obra necesita.
+        </p>
+        <a href="{{ url_for('contacto') }}" class="btn btn-lg px-5 py-3 font-weight-bold shadow transition-hover" style="background-color: #b91c1c; color: white; border: none; border-radius: 50px; letter-spacing: 1px;">
+            AGENDAR CONSULTORÍA
+        </a>
+    </div>
+</section>
+
+{% endblock %}

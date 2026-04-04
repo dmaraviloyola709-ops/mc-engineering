@@ -1,22 +1,369 @@
 {% extends "layout.html" %}
+
 {% block content %}
-<section class="bg-dark text-white py-5 shadow-sm" style="margin-top: 70px;">
-    <div class="container text-center">
-        <h1 class="display-4 font-weight-bold">Nuestra Identidad</h1>
-        <p class="lead">Ingeniería con precisión desde 2025.</p>
-    </div>
-</section>
-<section class="py-5 bg-white">
-    <div class="container">
+
+<div style="height: 76px; background-color: #121b25;"></div>
+
+<style>
+    /* --- ESTILOS PARA LA NUEVA SECCIÓN MISIÓN/VISIÓN --- */
+    .franja-roja-fondo {
+        position: absolute;
+        top: 20%; /* Empieza un poco más abajo del inicio */
+        bottom: 20%; /* Termina un poco antes del final */
+        left: 0;
+        width: 100%;
+        background-color: #b32d2d;
+        z-index: 0;
+    }
+    .tarjeta-mision {
+        border-radius: 12px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.12) !important; /* Sombra fuerte para que flote sobre el rojo */
+        transition: transform 0.3s ease;
+    }
+    .tarjeta-mision:hover {
+        transform: translateY(-5px);
+    }
+    .separador-tarjeta {
+        width: 50px;
+        height: 3px;
+        background-color: #b32d2d;
+        margin: 15px auto;
+    }
+
+    /* Efecto Hover para Tarjetas de Valores (Fondo Rojo, Texto Blanco) */
+    .valor-card {
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        background-color: #b32d2d; 
+        cursor: pointer;
+        min-height: 220px;
+    }
+    .valor-card .icon-valor,
+    .valor-card .title-valor,
+    .valor-card .text-valor {
+        color: #ffffff; 
+        transition: all 0.3s ease;
+    }
+    
+    .valor-card:hover {
+        background-color: #9e2626; 
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+    }
+
+    /* Estilos BLINDADOS para las Pestañas Verticales de Políticas */
+    .politicas-pills .nav-link {
+        color: #495057 !important; /* Fuerza el color gris oscuro para las letras */
+        background-color: #ffffff !important; /* Fuerza el fondo blanco */
+        border: 1px solid #dcdcdc !important;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        font-weight: 700;
+        text-align: center;
+        padding: 15px 10px;
+        transition: all 0.2s ease;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+    }
+    .politicas-pills .nav-link:hover {
+        border-color: #b32d2d !important;
+        color: #b32d2d !important; /* Letras rojas al pasar el mouse */
+        background-color: #fcfcfc !important;
+    }
+    .politicas-pills .nav-link.active {
+        background-color: #b32d2d !important; /* Fondo rojo al estar activo */
+        color: #ffffff !important; /* Letras blancas al estar activo */
+        border-color: #b32d2d !important;
+    }
+    .politicas-content {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 40px;
+        background-color: #ffffff;
+        min-height: 100%;
+    }
+
+    /* Estilos para las tarjetas de Normativas/Estandarización */
+    .cert-card {
+        border-radius: 8px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background-color: #ffffff;
+    }
+    .cert-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+    }
+    
+    /* CORRECCIÓN DE TAMAÑO DE LOGOS */
+    .cert-logo {
+        height: 90px; /* Fuerza a todos los logos a tener exactamente la misma altura */
+        width: 100%;  /* Ocupa el ancho disponible */
+        object-fit: contain; /* Escala la imagen sin deformarla para que encaje en el espacio */
+        opacity: 0.55;
+        filter: grayscale(100%);
+        transition: opacity 0.3s ease;
+    }
+    .cert-card:hover .cert-logo {
+        opacity: 0.8 !important; /* Se oscurece un poco al pasar el mouse */
+    }
+
+    @media (max-width: 991px) {
+        .franja-roja-fondo {
+            top: 10%;
+            bottom: 5%;
+        }
+    }
+</style>
+
+<section class="position-relative py-5 bg-white" style="overflow: hidden;">
+    
+    <div class="franja-roja-fondo"></div>
+
+    <div class="container position-relative py-5" style="z-index: 1;">
         <div class="row align-items-center">
-            <div class="col-md-6">
-                <h2 class="font-weight-bold mb-4 text-danger">¿Quiénes somos?</h2>
-                <p>En <strong>M&C Ingeniería Integrada</strong>, somos ingenieros que garantizan durabilidad y cumplimiento técnico en cada sol invertido.</p>
+            
+            <div class="col-lg-5 mb-5 mb-lg-0 text-center">
+                <img src="{{ url_for('static', filename='img/nosotros.jpeg') }}" 
+                     alt="Equipo M&C Integrated" 
+                     class="img-fluid shadow-lg" 
+                     style="object-fit: cover; object-position: center center; border-radius: 16px; width: 100%; max-height: 600px; min-height: 500px;">
             </div>
-            <div class="col-md-6 text-center">
-                <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800" class="img-fluid rounded shadow">
+            
+            <div class="col-lg-7">
+                <div class="pl-lg-4">
+                    
+                    <div class="card border-0 bg-white tarjeta-mision mb-4">
+                        <div class="card-body p-4 p-md-4 text-center">
+                            <h3 class="font-weight-bold d-flex justify-content-center align-items-center mb-0" style="color: #b32d2d; font-size: 1.5rem;">
+                                <i class="fas fa-bullseye mr-3"></i> Misión
+                            </h3>
+                            <div class="separador-tarjeta"></div>
+                            <p class="text-muted mb-0 px-md-3" style="line-height: 1.6; font-size: 0.95rem;">
+                                Construir un mejor país brindando servicios de ingeniería y construcción con excelencia, entendiendo las necesidades de nuestros clientes y cumpliendo nuestros compromisos. Siempre promoviendo el desarrollo integral de las personas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 bg-white tarjeta-mision mb-4">
+                        <div class="card-body p-4 p-md-4 text-center">
+                            <h3 class="font-weight-bold d-flex justify-content-center align-items-center mb-0" style="color: #b32d2d; font-size: 1.5rem;">
+                                <i class="fas fa-eye mr-3"></i> Visión
+                            </h3>
+                            <div class="separador-tarjeta"></div>
+                            <p class="text-muted mb-0 px-md-3" style="line-height: 1.6; font-size: 0.95rem;">
+                                Ser reconocidos como un referente de ingeniería integral en la industria de la construcción, generando valor a nuestros clientes a través de la innovación, seguridad y calidad.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 bg-white tarjeta-mision">
+                        <div class="card-body p-4 p-md-4 text-center">
+                            <h3 class="font-weight-bold d-flex justify-content-center align-items-center mb-0" style="color: #b32d2d; font-size: 1.5rem;">
+                                <i class="fas fa-hands-helping mr-3"></i> Propósito
+                            </h3>
+                            <div class="separador-tarjeta"></div>
+                            <p class="text-muted mb-0 px-md-3" style="line-height: 1.6; font-size: 0.95rem;">
+                                Dejar huella en la vida de las personas, construyendo proyectos seguros y eficientes para el desarrollo y modernización de nuestro entorno.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
+            
         </div>
     </div>
 </section>
+
+<section class="py-5 bg-light">
+    <div class="container py-4">
+        
+        <div class="mb-5">
+            <h2 class="font-weight-bold text-danger mb-2" style="font-size: 2.2rem; color: #b32d2d !important;">
+                Los valores de M&C
+            </h2>
+            <div style="width: 60px; height: 4px; background-color: #b32d2d; margin-bottom: 20px;"></div>
+            <p class="text-muted" style="max-width: 700px;">
+                Nuestro trabajo se sostiene en seguridad, calidad, planificación y mejora continua para cumplir hitos y generar valor sostenible en cada obra.
+            </p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="valor-card d-flex flex-column justify-content-center align-items-center p-4 text-center h-100">
+                    <i class="fas fa-heartbeat fa-3x mb-3 icon-valor"></i>
+                    <h5 class="font-weight-bold title-valor">Respeto absoluto por la vida.</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="valor-card d-flex flex-column justify-content-center align-items-center p-4 text-center h-100">
+                    <i class="fas fa-users fa-3x mb-3 icon-valor"></i>
+                    <h5 class="font-weight-bold title-valor">Nos preocupamos por las personas.</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="valor-card d-flex flex-column justify-content-center align-items-center p-4 text-center h-100">
+                    <i class="fas fa-book-open fa-3x mb-3 icon-valor"></i>
+                    <h5 class="font-weight-bold title-valor">Actuamos con integridad.</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="valor-card d-flex flex-column justify-content-center align-items-center p-4 text-center h-100">
+                    <i class="fas fa-bullseye fa-3x mb-3 icon-valor"></i>
+                    <h5 class="font-weight-bold title-valor">Nos enfocamos en el éxito de los proyectos.</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="valor-card d-flex flex-column justify-content-center align-items-center p-4 text-center h-100">
+                    <i class="fas fa-handshake fa-3x mb-3 icon-valor"></i>
+                    <h5 class="font-weight-bold title-valor">Nos orientamos al cliente, somos confiables.</h5>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="valor-card d-flex flex-column justify-content-center align-items-center p-4 text-center h-100">
+                    <i class="fas fa-lightbulb fa-3x mb-3 icon-valor"></i>
+                    <h5 class="font-weight-bold title-valor">Innovamos y nos adaptamos al cambio.</h5>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<section class="py-5 bg-white">
+    <div class="container py-5 text-center">
+        
+        <h2 class="font-weight-bold text-danger mb-2" style="font-size: 2.2rem; color: #b32d2d !important;">
+            Las políticas de M&C
+        </h2>
+        <div class="mx-auto" style="width: 80px; height: 4px; background-color: #b32d2d; margin-bottom: 20px;"></div>
+        <p class="text-muted mb-5">
+            Las políticas corporativas guían una ejecución con procesos trazables, control de riesgos y cumplimiento normativo.
+        </p>
+        
+        <div class="row text-left mt-5">
+            
+            <div class="col-md-4 mb-4">
+                <div class="nav flex-column nav-pills politicas-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    
+                    <a class="nav-link active" id="v-pills-sostenibilidad-tab" data-toggle="pill" href="#v-pills-sostenibilidad" role="tab" aria-selected="true">
+                        Política de Sostenibilidad
+                    </a>
+                    
+                    <a class="nav-link" id="v-pills-calidad-tab" data-toggle="pill" href="#v-pills-calidad" role="tab" aria-selected="false">
+                        Política de Calidad
+                    </a>
+                    
+                    <a class="nav-link" id="v-pills-sst-tab" data-toggle="pill" href="#v-pills-sst" role="tab" aria-selected="false">
+                        Política de Seguridad y Salud
+                    </a>
+                    
+                    <a class="nav-link" id="v-pills-medioambiente-tab" data-toggle="pill" href="#v-pills-medioambiente" role="tab" aria-selected="false">
+                        Política de Medio Ambiente
+                    </a>
+                    
+                    <a class="nav-link" id="v-pills-antisoborno-tab" data-toggle="pill" href="#v-pills-antisoborno" role="tab" aria-selected="false">
+                        Política Antisoborno
+                    </a>
+                    
+                </div>
+            </div>
+            
+            <div class="col-md-8">
+                <div class="tab-content politicas-content shadow-sm" id="v-pills-tabContent">
+                    
+                    <div class="tab-pane fade show active" id="v-pills-sostenibilidad" role="tabpanel">
+                        <h4 class="font-weight-bold text-danger mb-4" style="color: #b32d2d !important;">Política de Sostenibilidad</h4>
+                        <p class="text-muted small mb-3">Definir los principios que orienten a la empresa en la ejecución de sus operaciones de manera alineada con los estándares de sostenibilidad económica, social y ambiental. Buscamos impulsar el cumplimiento generando valor compartido:</p>
+                        <ul class="text-muted small pl-4">
+                            <li class="mb-2">Con el colaborador: generar mayor productividad, buenas condiciones y oportunidades de desarrollo.</li>
+                            <li class="mb-2">Con los clientes: incrementar la demanda de servicios, generar valor a sus negocios y escuchar sus necesidades.</li>
+                            <li class="mb-2">Con los proveedores: buscar insumos de calidad y cumplir con nuestros compromisos comerciales.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="v-pills-calidad" role="tabpanel">
+                        <h4 class="font-weight-bold text-danger mb-4" style="color: #b32d2d !important;">Política de Calidad</h4>
+                        <p class="text-muted small mb-3">M&C y todo su personal se compromete a:</p>
+                        <ul class="text-muted small pl-4">
+                            <li class="mb-2">Brindar servicios de construcción de elevada calidad y alto estándar técnico.</li>
+                            <li class="mb-2">Entender y cumplir las necesidades de nuestros clientes, logrando su satisfacción mediante el cumplimiento de planos, expedientes y normativas vigentes.</li>
+                            <li class="mb-2">Establecer y revisar periódicamente objetivos de mejora continua para optimizar los procesos operativos.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="v-pills-sst" role="tabpanel">
+                        <h4 class="font-weight-bold text-danger mb-4" style="color: #b32d2d !important;">Política de Seguridad y Salud en el Trabajo</h4>
+                        <p class="text-muted small mb-3">Nuestra empresa está orientada a ofrecer servicios de construcción con cero accidentes. Nos comprometemos a:</p>
+                        <ul class="text-muted small pl-4">
+                            <li class="mb-2">Proteger la seguridad y salud de todos los miembros proporcionando condiciones de trabajo seguras y equipos de protección personal (EPP).</li>
+                            <li class="mb-2">Cumplir la legislación vigente en materia de Seguridad y Salud Ocupacional en obras civiles.</li>
+                            <li class="mb-2">Prevenir y eliminar los peligros y reducir los riesgos en cada etapa constructiva.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="v-pills-medioambiente" role="tabpanel">
+                        <h4 class="font-weight-bold text-danger mb-4" style="color: #b32d2d !important;">Política de Medio Ambiente</h4>
+                        <p class="text-muted small mb-3">M&C se compromete firmemente con el respeto al entorno ecológico:</p>
+                        <ul class="text-muted small pl-4">
+                            <li class="mb-2">Identificar los aspectos ambientales más significativos para prevenir la contaminación por desmonte y residuos de obra.</li>
+                            <li class="mb-2">Mantener un mejoramiento continuo en la gestión ambiental y adopción de tecnologías limpias.</li>
+                            <li class="mb-2">Cumplir la normativa legal vigente de gestión de residuos de construcción y demolición.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tab-pane fade" id="v-pills-antisoborno" role="tabpanel">
+                        <h4 class="font-weight-bold text-danger mb-4" style="color: #b32d2d !important;">Política Antisoborno</h4>
+                        <p class="text-muted small mb-3">Mantenemos un compromiso firme y de tolerancia cero contra el soborno en todas sus operaciones. Prohibimos estrictamente cualquier práctica corrupta, directa o indirecta.</p>
+                        <ul class="text-muted small pl-4">
+                            <li class="mb-2">Establecer planes de control para tratar riesgos de soborno en adjudicaciones y licitaciones.</li>
+                            <li class="mb-2">Cumplir con la normativa legal y requisitos del sistema de gestión antisoborno.</li>
+                            <li class="mb-2">Garantizar confidencialidad total y ausencia de represalias para quienes denuncien actos irregulares.</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light">
+    <div class="container py-5 text-center">
+        
+        <h2 class="font-weight-bold text-danger mb-2" style="font-size: 2.2rem; color: #b32d2d !important;">
+            Operaciones Estandarizadas de Alta Eficiencia
+        </h2>
+        <div class="mx-auto" style="width: 80px; height: 4px; background-color: #b32d2d; margin-bottom: 20px;"></div>
+        <p class="text-muted mb-5 mx-auto" style="max-width: 850px;">
+            Alineamos nuestros procesos a las normativas internacionales más exigentes para garantizar calidad, control de riesgos operativos y mejora continua en cada proyecto.
+        </p>
+
+        <div class="row justify-content-center px-lg-5">
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card cert-card h-100 border shadow-sm d-flex align-items-center justify-content-center py-4 px-3" style="border-radius: 8px;">
+                    <img src="{{ url_for('static', filename='img/ISO 9001 (2).jpg') }}" alt="ISO 9001" class="img-fluid cert-logo">
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card cert-card h-100 border shadow-sm d-flex align-items-center justify-content-center py-4 px-3" style="border-radius: 8px;">
+                    <img src="{{ url_for('static', filename='img/ISO14001.JPG') }}" alt="ISO 14001" class="img-fluid cert-logo">
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card cert-card h-100 border shadow-sm d-flex align-items-center justify-content-center py-4 px-3" style="border-radius: 8px;">
+                    <img src="{{ url_for('static', filename='img/ISO 45001.JPG') }}" alt="ISO 45001" class="img-fluid cert-logo">
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
 {% endblock %}

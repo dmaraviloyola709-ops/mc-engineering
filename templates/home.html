@@ -2,68 +2,353 @@
 
 {% block content %}
 
+<style>
+    /* Estilo para el fondo con corte DIAGONAL */
+    .bg-diagonal-cortada {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 55%; /* El fondo oscuro ocupa el 55% */
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+        clip-path: polygon(0 0, 100% 0, 75% 100%, 0 100%);
+        transition: all 0.3s ease;
+    }
+
+    /* Ajuste de tipografías para que sean elegantes y no gigantes */
+    .texto-elegirnos-contenedor h2 {
+        font-size: clamp(1.8rem, 3vw, 2.5rem) !important;
+        word-wrap: break-word;
+    }
+
+    .texto-elegirnos-contenedor p.desc-principal {
+        font-size: clamp(0.9rem, 1.2vw, 1rem) !important;
+        line-height: 1.6;
+        opacity: 0.95;
+    }
+
+    /* En celulares y tablets pequeñas, quitamos la diagonal y apilamos */
+    @media (max-width: 991.98px) {
+        .bg-diagonal-cortada {
+            width: 100% !important;
+            clip-path: none !important;
+        }
+        /* Rompemos el flex para que se apilen en celular */
+        .seccion-elegirnos-flex > div {
+            flex: 0 0 100% !important;
+            max-width: 100% !important;
+            padding: 20px !important;
+        }
+        .texto-elegirnos-contenedor {
+             margin-left: 0 !important;
+             max-width: 100% !important;
+        }
+    }
+</style>
+
 <header class="page-section hero-bg">
     <div class="container text-center text-white">
-        <h1 class="mb-3 text-uppercase">M&C INTEGRATED ENGINEERING</h1>
-        <p class="h4 font-weight-light mb-5 tracking-widest opacity-75">INGENIERÍA QUE CONSTRUYE CONFIANZA</p>
-        <a class="btn btn-danger btn-lg px-5 py-3 rounded-0 shadow-lg font-weight-bold" href="#servicios">CONÓCENOS MÁS</a>
+        
+        <h1 class="mb-3 text-uppercase">
+            M&C INTEGRATED ENGINEERING
+        </h1>
+        
+        <p class="h4 font-weight-light mb-5 tracking-widest opacity-75">
+            INGENIERÍA QUE CONSTRUYE CONFIANZA
+        </p>
+        
+        <a class="btn btn-danger btn-lg px-5 py-3 rounded-0 shadow-lg font-weight-bold" href="{{ url_for('contacto') }}">
+            CONÓCENOS MÁS
+        </a>
+        
     </div>
 </header>
 
 <section id="servicios" class="page-section bg-white py-5">
     <div class="container">
+        
         <div class="text-center mb-5">
-            <h2 class="display-4 font-weight-bold text-danger mb-2">Nuestras unidades de negocio</h2>
-            <p class="text-muted mx-auto" style="max-width: 800px;">Soluciones especializadas alineadas a tus metas y a los más altos estándares.</p>
+            <h2 class="display-4 font-weight-bold text-danger mb-2">
+                Nuestras unidades de negocio
+            </h2>
+            
+            <div class="mx-auto mb-4" style="width: 80px; height: 4px; background-color: #b32d2d;"></div>
+            
+            <p class="text-muted mx-auto" style="max-width: 800px; font-size: 1.1rem;">
+                Ofrecemos soluciones integrales en acabados, ejecución de obra y respaldo de ingeniería civil, garantizando calidad técnica y cumplimiento normativo en cada proyecto.
+            </p>
         </div>
-        <div class="row no-gutters">
-            <div class="col-md-4 px-2">
-                <div class="unit-card-overlay"><img src="https://images.unsplash.com/photo-1574169208507-84376144848b?q=80&w=800"><div class="overlay-gradient"><h4 class="font-weight-bold">MINERÍA</h4></div></div>
+        
+        <div class="row">
+            
+            <div class="col-lg-4 col-md-6 mb-4 px-3">
+                <div class="unit-card-overlay" style="height: 550px !important;">
+                    <img src="{{ url_for('static', filename='img/drywall.jpg') }}" alt="Sistemas Drywall y Acabados">
+                    
+                    <div class="overlay-gradient" style="padding-bottom: 25px; flex-direction: column; align-items: center; text-align: center;">
+                        <h4 class="font-weight-bold text-white mb-2">
+                            SISTEMAS DRYWALL<br>Y ACABADOS
+                        </h4>
+                        <p class="text-white opacity-75 small px-3 mb-0">
+                            Instalación de estructuras drywall, techos termoacústicos, pintura y acabados arquitectónicos de alta calidad.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4 px-2">
-                <div class="unit-card-overlay"><img src="https://images.unsplash.com/photo-1590674899484-d5640e854abe?q=80&w=800"><div class="overlay-gradient"><h4 class="font-weight-bold">INFRAESTRUCTURA</h4></div></div>
+            
+            <div class="col-lg-4 col-md-6 mb-4 px-3">
+                <div class="unit-card-overlay" style="height: 550px !important;">
+                    <img src="{{ url_for('static', filename='img/remodelacion.jpg') }}" alt="Construcción y Remodelación">
+                    
+                    <div class="overlay-gradient" style="padding-bottom: 25px; flex-direction: column; align-items: center; text-align: center;">
+                        <h4 class="font-weight-bold text-white mb-2">
+                            CONSTRUCCIÓN Y<br>REMODELACIÓN
+                        </h4>
+                        <p class="text-white opacity-75 small px-3 mb-0">
+                            Ejecución de obras civiles, ampliaciones, reforzamiento estructural y mantenimiento integral de edificaciones.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4 px-2">
-                <div class="unit-card-overlay"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800"><div class="overlay-gradient"><h4 class="font-weight-bold">EDIFICACIONES</h4></div></div>
+            
+            <div class="col-lg-4 col-md-6 mb-4 px-3">
+                <div class="unit-card-overlay" style="height: 550px !important;">
+                    <img src="{{ url_for('static', filename='img/CONSULTORIA.jpg') }}" alt="Consultoría e Ingeniería">
+                    
+                    <div class="overlay-gradient" style="padding-bottom: 25px; flex-direction: column; align-items: center; text-align: center;">
+                        <h4 class="font-weight-bold text-white mb-2">
+                            CONSULTORÍA Y<br>SANEAMIENTO
+                        </h4>
+                        <p class="text-white opacity-75 small px-3 mb-0">
+                            Levantamiento de planos, independizaciones, declaratoria de fábrica, licencias y firmas de ingeniería.
+                        </p>
+                    </div>
+                </div>
             </div>
+            
+        </div>
+        
+    </div>
+</section>
+
+<section class="page-section bg-white" style="position: relative; overflow: hidden;">
+    
+    <div class="bg-diagonal-cortada" style="background-image: linear-gradient(rgba(18, 27, 37, 0.6), rgba(18, 27, 37, 0.8)), url('{{ url_for('static', filename='img/home.jpg') }}');"></div>
+
+    <div class="container-fluid position-relative z-index-2 py-5" style="max-width: 1600px;">
+        <div class="d-flex flex-wrap align-items-center w-100 m-0 seccion-elegirnos-flex">
+            
+            <div class="text-white mb-5 mb-lg-0" style="flex: 0 0 45%; max-width: 45%; padding: 0 4%; box-sizing: border-box;">
+                <div class="texto-elegirnos-contenedor" style="max-width: 420px; margin-left: auto;">
+                    
+                    <h2 class="font-weight-bold mb-0 text-white">
+                        ¿Por qué elegirnos?
+                    </h2>
+                    
+                    <div class="white-divider-thick" style="width: 60px; height: 3px; background-color: #fff; margin: 15px 0;"></div>
+                    
+                    <p class="desc-principal text-white mb-5">
+                        Integramos ingeniería civil rigurosa con ejecución técnica de acabados. Garantizamos control de calidad, seguridad y el cumplimiento estricto de cronogramas.
+                    </p>
+                    
+                    <h1 class="font-weight-bold mb-0 text-white" style="font-size: clamp(3.5rem, 5vw, 4.5rem); line-height: 1;">
+                        100%
+                    </h1>
+                    <p class="h6 font-weight-light text-white mt-2" style="opacity: 0.9; font-size: 1.1rem; letter-spacing: 0.5px;">
+                        Eficiencia y Transparencia
+                    </p>
+                    
+                </div>
+            </div>
+            
+            <div style="flex: 0 0 55%; max-width: 55%; padding: 0 4%; box-sizing: border-box;">
+                <div class="row">
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card overlap-card h-100 border shadow-sm transition-hover" style="border-radius: 8px;">
+                            <div class="card-body p-4">
+                                <h3 class="card-title-red font-weight-bold mb-2" style="color: #b32d2d; font-size: 1.3rem;">Equipo<br>integrado</h3>
+                                <p class="card-text-gray mt-3 text-muted small mb-0">Gestión completa bajo un solo responsable de confianza. Coordinamos especialidades para evitar interferencias y sobrecostos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card overlap-card h-100 border shadow-sm transition-hover" style="border-radius: 8px;">
+                            <div class="card-body p-4">
+                                <h3 class="card-title-red font-weight-bold mb-2" style="color: #b32d2d; font-size: 1.3rem;">Obras<br>confiables</h3>
+                                <p class="card-text-gray mt-3 text-muted small mb-0">Capacidad técnica y calidad certificada en cada etapa. Aplicamos normativas vigentes y estándares estructurales.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card overlap-card h-100 border shadow-sm transition-hover" style="border-radius: 8px;">
+                            <div class="card-body p-4">
+                                <h3 class="card-title-red font-weight-bold mb-2" style="color: #b32d2d; font-size: 1.3rem;">Alta<br>productividad</h3>
+                                <p class="card-text-gray mt-3 text-muted small mb-0">Optimización de procesos para acelerar su inversión. Planificación detallada que minimiza tiempos muertos en obra.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card overlap-card h-100 border shadow-sm transition-hover" style="border-radius: 8px;">
+                            <div class="card-body p-4">
+                                <h3 class="card-title-red font-weight-bold mb-2" style="color: #b32d2d; font-size: 1.3rem;">Riesgos<br>bajos</h3>
+                                <p class="card-text-gray mt-3 text-muted small mb-0">Control estricto de cronogramas y presupuestos reales. Identificamos desviaciones para corregir sin afectar el costo final.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
         </div>
     </div>
 </section>
 
-<section class="page-section">
-    <div class="container-fluid p-0">
-        <div class="row no-gutters">
-            <div class="col-lg-5 integration-dark d-flex align-items-center px-5 py-5">
-                <div class="w-100">
-                    <h2 class="display-4 font-weight-bold text-uppercase mb-0">NUESTRA</h2>
-                    <h2 class="display-3 font-weight-bold text-danger text-uppercase mb-4">INTEGRACIÓN</h2>
-                    <div class="red-divider"></div>
-                    <p class="h5 font-weight-light mb-5 opacity-75">Ingeniería y construcción bajo un solo equipo especializado.</p>
-                    <h1 class="display-1 font-weight-bold mb-0">+100</h1>
-                    <p class="h5 text-uppercase tracking-widest">Proyectos Entregados</p>
+<section class="page-section bg-white">
+    <div class="container text-center" style="max-width: 1400px;">
+        
+        <h2 class="font-weight-bold text-dark mb-3" style="font-size: 2.2rem;">
+            Materiales de primera calidad
+        </h2>
+        
+        <div class="mx-auto mb-4" style="width: 60px; height: 4px; background-color: #b32d2d;"></div>
+        
+        <p class="text-muted mb-5 mx-auto" style="max-width: 700px; font-size: 1.1rem;">
+            Construimos confianza utilizando únicamente insumos normados y marcas líderes en el mercado, garantizando la durabilidad y seguridad estructural de cada obra o sistema drywall.
+        </p>
+
+        <div class="marquee-container">
+            <div class="marquee-track">
+                
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/armstrong.jpg') }}" alt="Armstrong">
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-7 d-flex align-items-center bg-white px-5 py-5">
-                <div class="row w-100">
-                    <div class="col-md-6 mb-4"><div class="card integration-card p-4"><h6>EQUIPO INTEGRADO</h6><p class="small text-muted mb-0">Gestión completa bajo un solo responsable de confianza.</p></div></div>
-                    <div class="col-md-6 mb-4"><div class="card integration-card p-4"><h6>OBRAS CONFIABLES</h6><p class="small text-muted mb-0">Capacidad técnica y calidad certificada en cada etapa.</p></div></div>
-                    <div class="col-md-6 mb-4"><div class="card integration-card p-4"><h6>PRODUCTIVIDAD</h6><p class="small text-muted mb-0">Optimización de procesos para acelerar su inversión.</p></div></div>
-                    <div class="col-md-6 mb-4"><div class="card integration-card p-4"><h6>RIESGOS BAJOS</h6><p class="small text-muted mb-0">Control estricto de cronogramas y presupuestos reales.</p></div></div>
+                
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/constructek.jpg') }}" alt="Constructek">
+                    </div>
                 </div>
+                
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/ethernit.jpg') }}" alt="Eternit">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/gyplac.jpg') }}" alt="Gyplac">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/logoKnauf.jpg') }}" alt="Knauf">
+                    </div>
+                </div>
+
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/owens coornings.jpg') }}" alt="Owens Corning">
+                    </div>
+                </div>
+
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/sika.jpg') }}" alt="Sika">
+                    </div>
+                </div>
+
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/tupemesa.jpg') }}" alt="Tupemesa">
+                    </div>
+                </div>
+
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/volcan.jpg') }}" alt="Volcán">
+                    </div>
+                </div>
+
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/werken.jpg') }}" alt="Werken">
+                    </div>
+                </div>
+
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/armstrong.jpg') }}" alt="Armstrong">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/constructek.jpg') }}" alt="Constructek">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/ethernit.jpg') }}" alt="Eternit">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/gyplac.jpg') }}" alt="Gyplac">
+                    </div>
+                </div>
+                
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/logoKnauf.jpg') }}" alt="Knauf">
+                    </div>
+                </div>
+
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/owens coornings.jpg') }}" alt="Owens Corning">
+                    </div>
+                </div>
+
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/sika.jpg') }}" alt="Sika">
+                    </div>
+                </div>
+
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/tupemesa.jpg') }}" alt="Tupemesa">
+                    </div>
+                </div>
+
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/volcan.jpg') }}" alt="Volcán">
+                    </div>
+                </div>
+
+                <div class="marquee-item">
+                    <div class="brand-box">
+                        <img src="{{ url_for('static', filename='img/werken.jpg') }}" alt="Werken">
+                    </div>
+                </div>
+                
             </div>
         </div>
+        
     </div>
 </section>
 
-<section id="contacto" class="page-section bg-dark text-white">
-    <div class="container py-5 text-center">
-        <h2 class="display-4 font-weight-bold mb-4">¿Listo para <span class="text-danger">comenzar?</span></h2>
-        <p class="h5 mb-5 text-muted">Contáctanos para una asesoría técnica especializada.</p>
-        <div class="row justify-content-center">
-            <div class="col-md-6 bg-white p-4 text-dark shadow-lg">
-                <form><input type="text" class="form-control mb-3" placeholder="Nombre"><input type="email" class="form-control mb-3" placeholder="Email"><textarea class="form-control mb-3" rows="3" placeholder="Mensaje"></textarea><button class="btn btn-danger btn-block font-weight-bold">ENVIAR</button></form>
-            </div>
-        </div>
-    </div>
-</section>
 {% endblock %}
